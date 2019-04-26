@@ -1,6 +1,6 @@
 #!/bin/bash
-username=admin
-appname=setup_apim_script
+username=admin@wso2.com
+appname=setup_apim_script_tenant2
 client_request() {
     cat <<EOF
 {

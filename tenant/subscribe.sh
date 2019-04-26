@@ -17,7 +17,7 @@ EOF
 }
 
 
-echo "\n"curl -k -H \"Authorization: Bearer $access_token\" -H \"Content-Type: application/json\" -X POST -d "'"$(application_payload)"'" https://localhost:9443/api/am/store/v0.14/applications "\n"
+
 create_application() {
     local applicationId=$(curl -k -H "Authorization: Bearer $access_token" -H "Content-Type: application/json" -X POST -d "$(application_payload)" https://localhost:9443/api/am/store/v0.14/applications | jq -r '.applicationId')
 
@@ -37,7 +37,7 @@ subscription_payload(){
 EOF
 }
 
-echo "\n"curl -k -H \"Authorization: Bearer $access_token\" -H \"Content-Type: application/json\" -X POST -d "'"$(subscription_payload)"'" https://localhost:9443/api/am/store/v0.14/subscriptions"\n"
+echo $(subscription_payload)
 subscribe_to_product(){
      local subscriptionId=$(curl -k -H "Authorization: Bearer $access_token" -H "Content-Type: application/json" -X POST -d "$(subscription_payload)" https://localhost:9443/api/am/store/v0.14/subscriptions | jq -r '.subscriptionId')
 

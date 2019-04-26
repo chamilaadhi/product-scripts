@@ -14,8 +14,9 @@ calc_api_id=$(cat id.calc_api_id)
 api_product_payload(){
     cat<<EOF
 {
-  "name": "CalculatorAPIProduct",
+  "name": "NewAPIProduct",
   "description": "A calculator API Product that supports basic operations",
+  "provider": "admin",
   "thumbnailUri": "/api-products/01234567-0123-0123-0123-012345678901/thumbnail",
   "apiProductDefinition": "",
   "visibility": "PUBLIC",
@@ -23,8 +24,6 @@ api_product_payload(){
   "visibleTenants": [
     "string"
   ],
-  "tiers":["Bronze","Gold","Silver","Unlimited"],
-  "state": "PUBLISHED",
   "subscriptionAvailability": "current_tenant",
   "subscriptionAvailableTenants": [
     "tenant1",
@@ -44,16 +43,14 @@ api_product_payload(){
       "apiId": "$calc_api_id",
       "name": "CalculatorAPI",
       "resources": [
-        "POST:/add",
-        "POST:/divide"
+        "POST:/add"
       ]
     },
     {
       "apiId": "$math_api_id",
       "name": "MathAPI",
       "resources": [
-        "GET:/area",
-        "GET:/volume"
+        "GET:/area"
       ]
     }
   ]

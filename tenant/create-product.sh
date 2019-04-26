@@ -23,7 +23,6 @@ api_product_payload(){
   "visibleTenants": [
     "string"
   ],
-  "tiers":["Bronze","Gold","Silver","Unlimited"],
   "state": "PUBLISHED",
   "subscriptionAvailability": "current_tenant",
   "subscriptionAvailableTenants": [
