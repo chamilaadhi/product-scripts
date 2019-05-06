@@ -9,23 +9,26 @@ if test -f "$FILE"; then
 fi
 math_api_id=$(cat id.math_api_id)
 calc_api_id=$(cat id.calc_api_id)
+api_product_id=$(cat id.productid)
 
+echo "Updating API Product: "$api_product_id
 ################################CREATE API PRODUCT ############################
 api_product_payload(){
     cat<<EOF
 {
-  "name": "CalculatorAPIProduct",
-  "description": "A calculator API Product that supports basic operations",
+  "id" : "$api_product_id",
+  "name": "CalculatorAPIProductName",
+  "description": "A calculator API Product that supports basic operations. Updated description",
   "thumbnailUri": "/api-products/01234567-0123-0123-0123-012345678901/thumbnail",
   "apiProductDefinition": "",
-  "visibility": "PUBLIC",
-  "visibleRoles": ["testrole", "admin"],
+  "visibility": "PRIVATE",
+  "visibleRoles": ["testrole"],
   "visibleTenants": [
-    "string"
+    "wso2.com"
   ],
-  "tiers":["Bronze","Silver","Unlimited"],
+  "tiers":["Unlimited"],
   "state": "PUBLISHED",
-  "subscriptionAvailability": "specific_tenants",
+  "subscriptionAvailability": "all_tenants",
   "subscriptionAvailableTenants": [
     "test.com"
   ],
@@ -35,8 +38,8 @@ api_product_payload(){
     "additionalProp3": "string"
   },
   "businessInformation": {
-    "businessOwner": "businessowner",
-    "businessOwnerEmail": "businessowner@wso2.com"
+    "businessOwner": "chamila",
+    "businessOwnerEmail": "chamila@wso2.com"
   },
   "apis": [
     {
@@ -62,14 +65,10 @@ EOF
 }
 
 create_api_product() {
-    local api_product_id=$(curl -k -H "Authorization: Bearer $access_token" -H "Content-Type: application/json" -X POST -d "$(api_product_payload)" https://localhost:9443/api/am/publisher/v0.14/api-products | jq -r '.id')
+    local api_product_id=$(curl -k -H "Authorization: Bearer $access_token" -H "Content-Type: application/json" -X PUT -d "$(api_product_payload)" https://localhost:9443/api/am/publisher/v0.14/api-products/$api_product_id)
     echo $api_product_id
 }
-api_product_id=$(create_api_product)
-FILE=id.productid
-if test -f "$FILE"; then
-    rm id.productid
-fi
+update=$(curl -k -H "Authorization: Bearer $access_token" -H "Content-Type: application/json" -X PUT -d "$(api_product_payload)" https://localhost:9443/api/am/publisher/v0.14/api-products/$api_product_id)
 
-echo $api_product_id >> id.productid
-echo " API Product: " $api_product_id
+
+echo " API Product Updated: " $update

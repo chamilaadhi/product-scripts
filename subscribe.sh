@@ -30,7 +30,7 @@ productId=$(cat id.productid)
 subscription_payload(){
   cat<<EOF
 {
-	    "tier": "Unlimited",
+	    "tier": "Bronze",
 			"apiProductIdentifier": "$productId",
 		    "applicationId": "$applicationId"
 }
@@ -39,7 +39,7 @@ EOF
 
 echo "\n"curl -k -H \"Authorization: Bearer $access_token\" -H \"Content-Type: application/json\" -X POST -d "'"$(subscription_payload)"'" https://localhost:9443/api/am/store/v0.14/subscriptions"\n"
 subscribe_to_product(){
-     local subscriptionId=$(curl -k -H "Authorization: Bearer $access_token" -H "Content-Type: application/json" -X POST -d "$(subscription_payload)" https://localhost:9443/api/am/store/v0.14/subscriptions | jq -r '.subscriptionId')
+     local subscriptionId=$(curl -v -k -H "Authorization: Bearer $access_token" -H "Content-Type: application/json" -X POST -d "$(subscription_payload)" https://localhost:9443/api/am/store/v0.14/subscriptions | jq -r '.subscriptionId')
 
     echo $subscriptionId   
 }

@@ -20,6 +20,8 @@ api_product_payload(){
   "thumbnailUri": "/api-products/01234567-0123-0123-0123-012345678901/thumbnail",
   "apiProductDefinition": "",
   "visibility": "PUBLIC",
+  "tiers":["Bronze","Silver","Unlimited"],
+    "state": "PUBLISHED",
   "visibleRoles": [],
   "visibleTenants": [
     "string"
