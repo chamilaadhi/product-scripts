@@ -26,7 +26,7 @@ api_product_payload(){
   "visibleTenants": [
     "wso2.com"
   ],
-  "tiers":["Unlimited"],
+  "tiers":["Unlimited", "Bronze"],
   "state": "PUBLISHED",
   "subscriptionAvailability": "all_tenants",
   "subscriptionAvailableTenants": [
