@@ -17,13 +17,12 @@ api_product_payload(){
   "name": "CalculatorAPIProduct",
   "description": "A calculator API Product that supports basic operations",
   "thumbnailUri": "/api-products/01234567-0123-0123-0123-012345678901/thumbnail",
-  "apiProductDefinition": "",
   "visibility": "PUBLIC",
   "visibleRoles": ["testrole", "admin"],
   "visibleTenants": [
     "string"
   ],
-  "tiers":["Bronze","Silver","Unlimited"],
+  "policies":["Bronze","Silver","Unlimited"],
   "state": "PUBLISHED",
   "subscriptionAvailability": "specific_tenants",
   "subscriptionAvailableTenants": [
@@ -41,18 +40,28 @@ api_product_payload(){
   "apis": [
     {
       "apiId": "$calc_api_id",
-      "name": "CalculatorAPI",
-      "resources": [
-        "POST:/add",
-        "POST:/divide"
+      "operations": [
+        {
+          "uritemplate": "/add",
+          "httpVerb": "POST"
+        },
+        {
+          "uritemplate": "/divide",
+          "httpVerb": "POST"
+        }
       ]
     },
     {
       "apiId": "$math_api_id",
-      "name": "MathAPI",
-      "resources": [
-        "GET:/area",
-        "GET:/volume"
+      "operations": [
+        {
+          "uritemplate": "/area",
+          "httpVerb": "GET"
+        },
+        {
+          "uritemplate": "/volume",
+          "httpVerb": "GET"
+        }
       ]
     }
   ]
@@ -61,8 +70,9 @@ api_product_payload(){
 EOF
 }
 
+echo "\n" curl -k -H \"Authorization: Bearer $access_token\" -H \"Content-Type: application/json\" -X POST -d \"$(api_product_payload)\" https://localhost:9443/api/am/publisher/v1.0/api-products
 create_api_product() {
-    local api_product_id=$(curl -k -H "Authorization: Bearer $access_token" -H "Content-Type: application/json" -X POST -d "$(api_product_payload)" https://localhost:9443/api/am/publisher/v0.14/api-products | jq -r '.id')
+    local api_product_id=$(curl -k -H "Authorization: Bearer $access_token" -H "Content-Type: application/json" -X POST -d "$(api_product_payload)" https://localhost:9443/api/am/publisher/v1.0/api-products | jq -r '.id')
     echo $api_product_id
 }
 api_product_id=$(create_api_product)

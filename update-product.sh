@@ -20,13 +20,12 @@ api_product_payload(){
   "name": "CalculatorAPIProductName",
   "description": "A calculator API Product that supports basic operations. Updated description",
   "thumbnailUri": "/api-products/01234567-0123-0123-0123-012345678901/thumbnail",
-  "apiProductDefinition": "",
   "visibility": "PRIVATE",
-  "visibleRoles": ["testrole"],
+  "visibleRoles": ["testrole", "user1role"],
   "visibleTenants": [
     "wso2.com"
   ],
-  "tiers":["Unlimited", "Bronze"],
+  "policies":["Unlimited", "Bronze"],
   "state": "PUBLISHED",
   "subscriptionAvailability": "all_tenants",
   "subscriptionAvailableTenants": [
@@ -44,18 +43,28 @@ api_product_payload(){
   "apis": [
     {
       "apiId": "$calc_api_id",
-      "name": "CalculatorAPI",
-      "resources": [
-        "POST:/add",
-        "POST:/divide"
+      "operations": [
+        {
+          "uritemplate": "/add",
+          "httpVerb": "POST"
+        },
+        {
+          "uritemplate": "/divide",
+          "httpVerb": "POST"
+        }
       ]
     },
     {
       "apiId": "$math_api_id",
-      "name": "MathAPI",
-      "resources": [
-        "GET:/area",
-        "GET:/volume"
+      "operations": [
+        {
+          "uritemplate": "/area",
+          "httpVerb": "GET"
+        },
+        {
+          "uritemplate": "/volume",
+          "httpVerb": "GET"
+        }
       ]
     }
   ]
@@ -64,11 +73,12 @@ api_product_payload(){
 EOF
 }
 
+echo "\n"curl -k -H \"Authorization: Bearer $access_token\" -H \"Content-Type: application/json\" -X PUT -d \"$(api_product_payload)\" https://localhost:9443/api/am/publisher/v1.0/api-products/$api_product_id
 create_api_product() {
-    local api_product_id=$(curl -k -H "Authorization: Bearer $access_token" -H "Content-Type: application/json" -X PUT -d "$(api_product_payload)" https://localhost:9443/api/am/publisher/v0.14/api-products/$api_product_id)
+    local api_product_id=$(curl -k -H "Authorization: Bearer $access_token" -H "Content-Type: application/json" -X PUT -d "$(api_product_payload)" https://localhost:9443/api/am/publisher/v1.0/api-products/$api_product_id)
     echo $api_product_id
 }
-update=$(curl -k -H "Authorization: Bearer $access_token" -H "Content-Type: application/json" -X PUT -d "$(api_product_payload)" https://localhost:9443/api/am/publisher/v0.14/api-products/$api_product_id)
+update=$(curl -k -H "Authorization: Bearer $access_token" -H "Content-Type: application/json" -X PUT -d "$(api_product_payload)" https://localhost:9443/api/am/publisher/v1.0/api-products/$api_product_id)
 
 
 echo " API Product Updated: " $update
