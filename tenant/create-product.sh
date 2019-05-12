@@ -62,7 +62,7 @@ EOF
 }
 
 create_api_product() {
-    local api_product_id=$(curl -k -H "Authorization: Bearer $access_token" -H "Content-Type: application/json" -X POST -d "$(api_product_payload)" https://localhost:9443/api/am/publisher/v0.14/api-products | jq -r '.id')
+    local api_product_id=$(curl -k -H "Authorization: Bearer $access_token" -H "Content-Type: application/json" -X POST -d "$(api_product_payload)" https://localhost:9443/api/am/publisher/v1.0/api-products | jq -r '.id')
     echo $api_product_id
 }
 api_product_id=$(create_api_product)

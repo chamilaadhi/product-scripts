@@ -20,7 +20,7 @@ api_product_payload(){
   "name": "CalculatorAPIProductName",
   "description": "A calculator API Product that supports basic operations. Updated description",
   "thumbnailUri": "/api-products/01234567-0123-0123-0123-012345678901/thumbnail",
-  "visibility": "PRIVATE",
+  "visibility": "PUBLIC",
   "visibleRoles": ["testrole", "user1role"],
   "visibleTenants": [
     "wso2.com"

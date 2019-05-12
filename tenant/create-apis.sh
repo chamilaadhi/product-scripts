@@ -5,8 +5,8 @@ echo "\nAccess token : " $access_token "\n"
 create_and_publish_api() {
     local api_payload="$1"
     #echo "Waiting for completion"
-    local api_id=$(curl -k -H "Authorization: Bearer $access_token" -H "Content-Type: application/json" -X POST -d @$api_payload.json https://localhost:9443/api/am/publisher/v0.14/apis | jq -r '.id')
-    local publish_api_status=$(curl -k -H "Authorization: Bearer $access_token" -X POST "https://localhost:9443/api/am/publisher/v0.14/apis/change-lifecycle?apiId=${api_id}&action=Publish")
+    local api_id=$(curl -k -H "Authorization: Bearer $access_token" -H "Content-Type: application/json" -X POST -d @$api_payload.json https://localhost:9443/api/am/publisher/v1.0/apis | jq -r '.id')
+    local publish_api_status=$(curl -k -H "Authorization: Bearer $access_token" -X POST "https://localhost:9443/api/am/publisher/v1.0/apis/change-lifecycle?apiId=${api_id}&action=Publish")
     sleep 5
     echo $api_id
 }
