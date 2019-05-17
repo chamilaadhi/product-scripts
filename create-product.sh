@@ -29,10 +29,11 @@ api_product_payload(){
     "test.com"
   ],
   "additionalProperties": {
-    "additionalProp1": "string",
+    "newprop": "string",
     "additionalProp2": "string",
     "additionalProp3": "string"
   },
+  "scope" : "calculator",
   "businessInformation": {
     "businessOwner": "businessowner",
     "businessOwnerEmail": "businessowner@wso2.com"

@@ -18,7 +18,7 @@ api_product_payload(){
 {
   "id" : "$api_product_id",
   "name": "CalculatorAPIProductName",
-  "description": "A calculator API Product that supports basic operations. Updated description",
+  "description": "A calculator API Product that supports basic operations. Updated description. Adding more text. blah blah blah. dfadadsadcadscasdcasdcasdcasdcasc",
   "thumbnailUri": "/api-products/01234567-0123-0123-0123-012345678901/thumbnail",
   "visibility": "PUBLIC",
   "visibleRoles": ["testrole", "user1role"],
@@ -32,10 +32,11 @@ api_product_payload(){
     "test.com"
   ],
   "additionalProperties": {
-    "additionalProp1": "string",
+    "property1": "test",
     "additionalProp2": "string",
     "additionalProp3": "string"
   },
+  "scope" : "calculator",
   "businessInformation": {
     "businessOwner": "chamila",
     "businessOwnerEmail": "chamila@wso2.com"
