@@ -15,7 +15,7 @@ client_request() {
 }
 EOF
 }
-client_credentials=$(curl -k -u $username:admin -H "Content-Type: application/json" -d "$(client_request)" https://localhost:9443/client-registration/v0.14/register| jq -r '.clientId + ":" + .clientSecret')
+client_credentials=$(curl -k -u $username:admin -H "Content-Type: application/json" -d "$(client_request)" https://localhost:9443/client-registration/v0.17/register| jq -r '.clientId + ":" + .clientSecret')
 #echo $client_credentials
 get_access_token() {
 	echo "curl -k -d \"grant_type=password&username=$tokenUser&password=admin&scope=apim:api_view apim:api_publish apim:api_create apim:subscribe\" -u $client_credentials https://localhost:8243/token\n"
