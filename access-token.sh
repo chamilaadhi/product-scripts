@@ -24,5 +24,14 @@ get_access_token() {
     echo $access_token
 }
 
+#generate tokens with specific scope
+get_access_token_with_scope() {
+	echo "curl -k -d \"grant_type=password&username=$tokenUser&password=admin&scope=apim:api_workflow_view apim:api_workflow_approve apim:tenantInfo apim:admin_settings apim:api_view apim:api_publish apim:api_create apim:subscribe\" -u $client_credentials https://localhost:8243/token\n"
+    local access_token=$(curl -k -d "grant_type=password&username=$tokenUser&password=admin&$1" -u $client_credentials https://localhost:8243/token | jq -r '.access_token')
+    echo $access_token
+}
+
 access_token=$(get_access_token)
+# get access token with scope
+#access_token=$(get_access_token apim:api_workflow_approve)
 echo $access_token
