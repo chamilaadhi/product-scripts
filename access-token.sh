@@ -1,5 +1,6 @@
 #!/bin/bash
 username=admin
+#to test with tenant, uncomment below
 #username=admin@wso2.com
 tokenUser=admin
 appname=setup_apim_script_1
