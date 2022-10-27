@@ -17,7 +17,6 @@ api_product_payload(){
   "name": "NewAPIProduct",
   "description": "A calculator API Product that supports basic operations",
   "provider": "admin",
-  "thumbnailUri": "/api-products/01234567-0123-0123-0123-012345678901/thumbnail",
   "apiProductDefinition": "",
   "visibility": "PUBLIC",
   "tiers":["Bronze","Silver","Unlimited"],
