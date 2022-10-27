@@ -1,0 +1,83 @@
+{
+   "name":"VehicleAPI",
+   "description":null,
+   "context":"/vehicle",
+   "version":"1.0",
+   "status":"PUBLISHED",
+   "thumbnailUri":null,
+   "apiDefinition":"{\r\n  \"swagger\": \"2.0\",\r\n  \"paths\": {\r\n    \"\/type\": {\r\n      \"get\": {\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"\"\r\n          }\r\n        },\r\n        \"x-auth-type\": \"Application & Application User\",\r\n        \"x-throttling-tier\": \"Unlimited\"\r\n      }\r\n    },\r\n    \"\/make\": {\r\n      \"get\": {\r\n        \"responses\": {\r\n          \"200\": {\r\n            \"description\": \"\"\r\n          }\r\n        },\r\n        \"x-auth-type\": \"Application & Application User\",\r\n        \"x-throttling-tier\": \"Unlimited\"\r\n      }\r\n    }\r\n  },\r\n  \"info\": {\r\n    \"title\": \"VehicleAPI\",\r\n    \"version\": \"1.0\"\r\n  }\r\n}",
+   "wsdlUri":null,
+   "responseCaching":"Disabled",
+   "cacheTimeout":300,
+   "destinationStatsEnabled":null,
+   "isDefaultVersion":false,
+   "type":"HTTP",
+   "transport":[
+      "http",
+      "https"
+   ],
+   "tags":[
+      
+   ],
+   "tiers":[
+      "Unlimited"
+   ],
+   "apiLevelPolicy":null,
+   "authorizationHeader":null,
+   "apiSecurity":"oauth2",
+   "maxTps":null,
+   "visibility":"PUBLIC",
+   "visibleRoles":[
+      
+   ],
+   "visibleTenants":[
+      
+   ],
+   "endpointConfig":"{\"production_endpoints\":{\"url\":\"http://www.mocky.io/v2/5afe55d53200000f00222e02\",\"config\":null,\"template_not_supported\":false},\"endpoint_type\":\"http\"}",
+   "endpointSecurity":null,
+   "gatewayEnvironments":"Production and Sandbox",
+   "labels":[
+      
+   ],
+   "sequences":[
+      
+   ],
+   "subscriptionAvailability":null,
+   "subscriptionAvailableTenants":[
+      
+   ],
+   "additionalProperties":{
+      
+   },
+   "accessControl":"NONE",
+   "accessControlRoles":[
+      
+   ],
+   "businessInformation":{
+      "businessOwner":null,
+      "businessOwnerEmail":null,
+      "technicalOwner":null,
+      "technicalOwnerEmail":null
+   },
+   "corsConfiguration":{
+      "corsConfigurationEnabled":false,
+      "accessControlAllowOrigins":[
+         "*"
+      ],
+      "accessControlAllowCredentials":false,
+      "accessControlAllowHeaders":[
+         "authorization",
+         "Access-Control-Allow-Origin",
+         "Content-Type",
+         "SOAPAction"
+      ],
+      "accessControlAllowMethods":[
+         "GET",
+         "PUT",
+         "POST",
+         "DELETE",
+         "PATCH",
+         "OPTIONS"
+      ]
+   }
+}
